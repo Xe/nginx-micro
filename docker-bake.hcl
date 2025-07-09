@@ -1,3 +1,7 @@
+variable "NGINX_VERSION" {
+  default = "1.29.0"
+}
+
 group "default" {
   targets = ["nginx-micro"]
 }
@@ -6,9 +10,24 @@ target "nginx-micro" {
   context = "."
   dockerfile = "Dockerfile"
   tags = [
-    "tigersmile/nginx-micro:latest",
-    "tigersmile/nginx-micro:1.29.0"
+    "ghcr.io/xe/nginx-micro:latest",
+    "ghcr.io/xe/nginx-micro:v1.29.0"
   ]
+  #cache-from = [
+  #  {
+  #    type = "registry",
+  #    ref = "ghcr.io/xe/nginx-micro"
+  #  }
+  #]
+  #cache-to = [ 
+  #  {
+  #    type = "registry",
+  #    ref = "ghcr.io/xe/nginx-micro"
+  #  }
+  #]
+  args = {
+    "NGINX_VERSION" = "${NGINX_VERSION}"
+  }
   platforms = [
     "linux/386",
     "linux/amd64",
@@ -18,5 +37,4 @@ target "nginx-micro" {
     "linux/ppc64le",
     "linux/riscv64"
   ]
-  output = ["type=registry"]
 }
