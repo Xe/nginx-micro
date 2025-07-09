@@ -13,18 +13,18 @@ target "nginx-micro" {
     "ghcr.io/xe/nginx-micro:latest",
     "ghcr.io/xe/nginx-micro:v1.29.0"
   ]
-  #cache-from = [
-  #  {
-  #    type = "registry",
-  #    ref = "ghcr.io/xe/nginx-micro"
-  #  }
-  #]
-  #cache-to = [ 
-  #  {
-  #    type = "registry",
-  #    ref = "ghcr.io/xe/nginx-micro"
-  #  }
-  #]
+  cache-from = [
+    {
+      type = "registry",
+      ref = "ghcr.io/xe/nginx-micro"
+    }
+  ]
+  cache-to = [ 
+    {
+      type = "registry",
+      ref = "ghcr.io/xe/nginx-micro"
+    }
+  ]
   args = {
     "NGINX_VERSION" = "${NGINX_VERSION}"
   }
