@@ -16,13 +16,13 @@ target "nginx-micro" {
   cache-from = [
     {
       type = "registry",
-      ref = "ghcr.io/xe/nginx-micro"
+      ref = "ghcr.io/xe/nginx-micro/cache"
     }
   ]
   cache-to = [ 
     {
       type = "registry",
-      ref = "ghcr.io/xe/nginx-micro"
+      ref = "ghcr.io/xe/nginx-micro/cache"
     }
   ]
   args = {
